@@ -4,9 +4,9 @@ provider "aws" {
 
 resource "aws_s3_bucket" "eg" {
     bucket = "shubhz"
-    tag = {
-        name = my-bucket
-        env = dev
+    tags = {
+        name = "my-bucket"
+        env = "dev"
 
     }
 }
