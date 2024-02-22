@@ -1,13 +1,13 @@
 variable "ami" {
-    default = "ami-0440d3b780d96b29d"
+    default = "ami-0014ce3e52359afbd"
 }
 
 variable "instance_type" {
-    default = "t2.micro"
+    default = "t3.micro"
 }
 
 variable "ssh_key" {
-    default = "shubham-nv"
+    default = "shubha"
 }
 
 variable "project" {
@@ -15,7 +15,7 @@ variable "project" {
 }
 
 variable "sg_id" {
-    default = "sg-0e1a0c4dc73ab9bbc"
+    default = ""sg-014652e8102e84808
 }
 
 variable "min_size" {
@@ -31,7 +31,7 @@ variable "desired_capacity" {
 }
 
 variable "subnets" {
-    default = ["subnet-05117aa5bd407d057", "subnet-03a62415a23a7e7bb"]
+    default = ["subnet-07468bb006cd32e5a", "subnet-0f1a1a2dacc0efb2c"]
 }
 
 variable "env" {
@@ -39,8 +39,8 @@ variable "env" {
 }
 
 variable "vpc_id" {
-    default = "vpc-06cf206737ed67da7"
+    default = "vpc-0207ac0d2846e90d8"
 }
 variable "azs" {
-    default = ["us-east-1c", "us-east-1b"]
+    default = ["us-east-1c", "us-east-1a"]
 }
