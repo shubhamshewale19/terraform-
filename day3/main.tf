@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "asg" {
-    source = "./modules/autoscaling"
+    source = "/modules/autoscaling"
     image_id = var.ami
     instance_type = var.instance_type
     key_pair = var.ssh_key
@@ -18,7 +18,7 @@ module "asg" {
 
 
 module "lb" {
-    source = "./modules/loadbalancer"
+    source = "/modules/loadbalancer"
     project = var.project
     env = var.env
     security_group_id = var.sg_id
