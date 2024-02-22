@@ -71,7 +71,7 @@ resource "aws_internet_gateway" "eks-igw" {
 #creating subnets
 resource "aws_subnet" "public-1a"{
     vpc_id = aws_vpc.eks-vpc.id
-    availability_zone = "ap-south-1a"
+    availability_zone = "eu-north-1a"
     map_public_ip_on_launch = true
     cidr_block = "10.0.0.0/19"
     tags = {
@@ -80,7 +80,7 @@ resource "aws_subnet" "public-1a"{
 }
 resource "aws_subnet" "public-1b"{
     vpc_id = aws_vpc.eks-vpc.id
-    availability_zone = "ap-south-1b"
+    availability_zone = "eu-north-1b"
     map_public_ip_on_launch = true
     cidr_block = "10.0.32.0/19"
     tags = {
@@ -89,7 +89,7 @@ resource "aws_subnet" "public-1b"{
 }
 resource "aws_subnet" "public-1c"{
     vpc_id = aws_vpc.eks-vpc.id
-    availability_zone = "ap-south-1c"
+    availability_zone = "eu-north-1c"
     map_public_ip_on_launch = true
     cidr_block = "10.0.64.0/19"
     tags = {
@@ -160,7 +160,7 @@ resource "aws_security_group" "eks-sg" {
 
 #creating eks
 resource "aws_eks_cluster" "cluster" {
-  name = "prathamesh"
+  name = "eks"
   role_arn = aws_iam_role.rolecluster.arn
   vpc_config {
     subnet_ids = [
@@ -173,9 +173,9 @@ resource "aws_eks_cluster" "cluster" {
 }
 
 #creating nodes
-resource "aws_eks_node_group" "prathamesh-node" {
+resource "aws_eks_node_group" "node" {
   cluster_name = aws_eks_cluster.cluster.name
-  node_group_name = "prathamesh"
+  node_group_name = "nodeeks"
   node_role_arn = aws_iam_role.noderole.arn
   subnet_ids = [
     aws_subnet.public-1a.id,
@@ -183,7 +183,7 @@ resource "aws_eks_node_group" "prathamesh-node" {
     aws_subnet.public-1c.id
   ]
   capacity_type = "ON_DEMAND"
-  instance_types = ["t3.small"]
+  instance_types = ["t3.micro"]
   scaling_config {
     desired_size = 2
     min_size = 1
